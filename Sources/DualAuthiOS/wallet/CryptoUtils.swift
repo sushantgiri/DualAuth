@@ -207,10 +207,15 @@ func createJWT(secret: String, payload: Payload, header: Header) -> String {
             let authenticating = (headerBase64String + "." + payloadBase64String).data(using: .utf8)!
 
             if let signature = signatureBase64String.base64urlToData() {
-                let isValid = HMAC<CryptoKit.SHA256>.isValidAuthenticationCode(signature, authenticating: authenticating, using: privateKey);
-                if isValid {
-                    return (header, payload, signature, authenticating)
+                if #available(iOS 13.2, *){
+                    let isValid = HMAC<CryptoKit.SHA256>.isValidAuthenticationCode(signature, authenticating: authenticating, using: privateKey);
+                    if isValid {
+                        return (header, payload, signature, authenticating)
+                    }
+                }else{
+                    return nil
                 }
+                
                
             }
             return nil
