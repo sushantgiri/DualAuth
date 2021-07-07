@@ -74,24 +74,24 @@ extension String {
     
 }
 
-struct Header: Codable {
-    var alg:String
-    var typ: String
+public struct Header: Codable {
+    public var alg:String
+    public var typ: String
     
 }
 
-struct Payload: Codable {
-    var aud: String
-    var name: String
-    var iss: String
-    var iat: String
+public struct Payload: Codable {
+    public var aud: String
+    public  var name: String
+    public var iss: String
+    public  var iat: String
 }
 
-struct VerifiableCredentialPayload: Codable{
+public struct VerifiableCredentialPayload: Codable{
    
-    var vp: VPPayload
-    var nonce: String
-    var iss: String
+    public var vp: VPPayload
+    public var nonce: String
+    public var iss: String
     
     private enum CodingKeys : String, CodingKey {
         case vp
@@ -101,9 +101,9 @@ struct VerifiableCredentialPayload: Codable{
     
     
     struct VPPayload : Codable{
-        var context: [String]
-        var type: [String]
-        var verifiableCredential: [String]
+        public   var context: [String]
+        public   var type: [String]
+        public   var verifiableCredential: [String]
         
         private enum CodingKeys : String, CodingKey {
             case context = "@context"
