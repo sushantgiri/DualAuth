@@ -11,11 +11,11 @@ import Foundation
 
 
 public class WalletUtils {
-    private var userMnemonics: String = ""
-    private var userPrivateKey: String = ""
-    private var userAddress: String  = ""
-    private var dataKey: String =  ""
-    private var userData: UserData = UserData()
+    public var userMnemonics: String = ""
+    public var userPrivateKey: String = ""
+    public var userAddress: String  = ""
+    public var dataKey: String =  ""
+    public var userData: UserData = UserData()
     
     init() {
     }
@@ -108,25 +108,25 @@ public class WalletUtils {
 
 
    public struct Wallet {
-        let address: String
-        let data: Data
-        let name: String
-        let isHD: Bool
+    public   let address: String
+    public   let data: Data
+    public   let name: String
+    public   let isHD: Bool
     }
 
    public struct HDKey {
-        let name: String?
-        let address: String
+    public     let name: String?
+    public    let address: String
     }
     
     public struct UserData: Codable {
-         var userMnemonics: String = ""
-         var userPrivateKey: String = ""
-         var userAddress: String = ""
-         var dataKey: String = ""
-         var password: String = ""
-         var cardList: Array<VCPayload>?
-        var vcJwtData: Array<String>?
+        public    var userMnemonics: String = ""
+        public    var userPrivateKey: String = ""
+        public  var userAddress: String = ""
+        public  var dataKey: String = ""
+        public  var password: String = ""
+        public  var cardList: Array<VCPayload>?
+        public var vcJwtData: Array<String>?
         
     }
 }
