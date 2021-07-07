@@ -114,9 +114,9 @@ struct VerifiableCredentialPayload: Codable{
     
 }
 
-struct CryptoUtils{
+public struct CryptoUtils{
     
-    init(){
+  public  init(){
         
     }
     
@@ -130,7 +130,7 @@ struct CryptoUtils{
         return base64
     }
     
-func createJWT(secret: String, payload: Payload, header: Header) -> String {
+public func createJWT(secret: String, payload: Payload, header: Header) -> String {
     if #available(macOS 10.15, *) {
         let privateKey = CryptoKit.SymmetricKey(data: secret.data(using: .utf8)!)
         
@@ -163,7 +163,7 @@ func createJWT(secret: String, payload: Payload, header: Header) -> String {
     
  
     
-    func createVP(secret: String, payload: VerifiableCredentialPayload, header: Header) -> String {
+ public   func createVP(secret: String, payload: VerifiableCredentialPayload, header: Header) -> String {
         
         do {
         let jsonData = try JSONEncoder().encode(payload)
@@ -178,7 +178,7 @@ func createJWT(secret: String, payload: Payload, header: Header) -> String {
         }
     }
     
-    private static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+    public static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
        if let data = text.data(using: .utf8) {
            do {
                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]
@@ -192,7 +192,7 @@ func createJWT(secret: String, payload: Payload, header: Header) -> String {
     
     
     
-    func decodeJWT(token: String, secret: String)throws -> (Header, Payload, Data, Data)?{
+   public func decodeJWT(token: String, secret: String)throws -> (Header, Payload, Data, Data)?{
         if #available(macOS 10.15, *) {
             let privateKey = CryptoKit.SymmetricKey(data: secret.data(using: .utf8)!)
             let jwtTokenArray = token.components(separatedBy: ".")
@@ -229,7 +229,7 @@ func createJWT(secret: String, payload: Payload, header: Header) -> String {
         
     }
     
-    func decodeJWTPayload(token: String) -> VCPayload {
+  public  func decodeJWTPayload(token: String) -> VCPayload {
         let jwtTokenArray = token.components(separatedBy: ".")
         let payloadBase64String = jwtTokenArray[1]
         return try! JSONDecoder().decode(VCPayload.self, from: payloadBase64String.base64urlToData()!)
@@ -237,7 +237,7 @@ func createJWT(secret: String, payload: Payload, header: Header) -> String {
     }
     
  
-    func verifyJWT(token: String, secret: String, serviceEndpoint: String, completionHandler: @escaping (_ payload: Payload?, _ error: Error?) -> Void){
+  public  func verifyJWT(token: String, secret: String, serviceEndpoint: String, completionHandler: @escaping (_ payload: Payload?, _ error: Error?) -> Void){
         do {
             if let (_,payload,_,_)  = try decodeJWT(token: token, secret: secret){
                 

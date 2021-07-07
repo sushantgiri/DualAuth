@@ -17,7 +17,7 @@ public class WalletUtils {
     public var dataKey: String =  ""
     public var userData: UserData = UserData()
     
-    init() {
+    public init() {
     }
     
    public  func did(password: String, completionHandler: @escaping (_ payload: UserData?, _ error: Error?) -> Void){
