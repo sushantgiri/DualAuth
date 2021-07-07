@@ -100,7 +100,7 @@ public struct VerifiableCredentialPayload: Codable{
        }
     
     
-    struct VPPayload : Codable{
+   public struct VPPayload : Codable{
         public   var context: [String]
         public   var type: [String]
         public   var verifiableCredential: [String]
