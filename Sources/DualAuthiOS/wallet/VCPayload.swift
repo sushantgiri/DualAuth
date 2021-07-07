@@ -101,7 +101,7 @@ extension Date {
 
 extension String {
     
-    func getFormattedDate() -> String{
+    public func getFormattedDate() -> String{
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
 
@@ -115,7 +115,7 @@ extension String {
        return self
     }
     
-    func dateFormatter() -> String {
+   public  func dateFormatter() -> String {
             
       let dateFormatter = DateFormatter()
        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
