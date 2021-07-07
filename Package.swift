@@ -5,22 +5,33 @@ import PackageDescription
 
 let package = Package(
     name: "DualAuthiOS",
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_12)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "DualAuthiOS",
             targets: ["DualAuthiOS"]),
     ],
+   
     dependencies: [
+        
         // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(name: "CryptoSwift", url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMinor(from: "1.4.0")),
+        .package(name: "secp256k1", url: "https://github.com/Boilertalk/secp256k1.swift.git", .upToNextMajor(from: "0.1.4")),
     ],
+       
+       
+    
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DualAuthiOS",
-            dependencies: []),
+            dependencies: ["CryptoSwift","secp256k1"]),
+    
         .testTarget(
             name: "DualAuthiOSTests",
             dependencies: ["DualAuthiOS"]),
