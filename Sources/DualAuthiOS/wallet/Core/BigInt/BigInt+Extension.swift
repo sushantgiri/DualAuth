@@ -9,6 +9,7 @@
 import Foundation
 
 extension BInt {
+    
     internal init?(str: String, radix: Int) {
         self.init(0)
         let bint16 = BInt(16)
