@@ -28,11 +28,14 @@ public class WalletUtils {
 
     
     public init() {
+        
         initializeContract()
+        
     }
     
     func initializeContract(){
         do{
+            
         let web3 = Web3(rpcURL: "http://182.162.89.51:4313")
             let contractAddress = try EthereumAddress(hex: "0x3CF0CB3cD457b959F6027676dF79200C8EF19907", eip55: true)
             if let url = Bundle.main.url(forResource: "abi", withExtension: "json") {
@@ -46,6 +49,7 @@ public class WalletUtils {
     }
 
     func sha256(data : Data) -> Data {
+        
         var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
         data.withUnsafeBytes {
             _ = CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
