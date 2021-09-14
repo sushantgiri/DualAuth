@@ -64,7 +64,7 @@ public class WalletUtils {
         let modifiedIssuer = issuer.replacingOccurrences(of: "did:dual:", with: "")
 
         firstly {
-           try contract!["GetRevokeCodeVC"]!(hash,modifiedIssuer).call()
+            contract!["GetRevokeCodeVC"]!(hash,modifiedIssuer).call()
         }.done { outputs in
             completionHandler(true, nil)
         }.catch { error in
