@@ -6,7 +6,7 @@ public struct EthereumRawTransaction {
     public let value: Wei
     
     /// Address to send ether to
-    public let to: EthereumAddress
+    public let to: EthereumAddress1
     
     /// Gas price for this transaction, unit is in Wei
     /// you need to convert it if it is specified in GWei
@@ -25,7 +25,7 @@ public struct EthereumRawTransaction {
 
     public init(value: Wei, to: String, gasPrice: Int, gasLimit: Int, nonce: Int, data: Data = Data()) {
         self.value = value
-        self.to = EthereumAddress(string:to)
+        self.to = EthereumAddress1(string:to)
         self.gasPrice = gasPrice
         self.gasLimit = gasLimit
         self.nonce = nonce

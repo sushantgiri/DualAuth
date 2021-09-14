@@ -15,6 +15,7 @@ struct DualDID {
     private let cryptoUtils: CryptoUtils
     
     
+    
     init(privateKey: String, userAddress: String, serviceEndPoint: String){
          self.privateKey = privateKey
          self.userAddress = userAddress;

@@ -21,6 +21,8 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(name: "CryptoSwift", url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMinor(from: "1.4.0")),
         .package(name: "secp256k1", url: "https://github.com/Boilertalk/secp256k1.swift.git", .upToNextMajor(from: "0.1.4")),
+        .package(name: "Web3",url: "https://github.com/Boilertalk/Web3.swift.git",
+            .upToNextMajor(from: "0.5.0")),
     ],
        
        
@@ -30,7 +32,13 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DualAuthiOS",
-            dependencies: ["CryptoSwift","secp256k1"]),
+            dependencies: [
+                           .product(name: "CryptoSwift", package: "CryptoSwift"),
+                           .product(name: "secp256k1", package: "secp256k1"),
+                           .product(name: "Web3", package: "Web3"),
+                           .product(name: "Web3PromiseKit", package: "Web3"),
+                           .product(name: "Web3ContractABI", package: "Web3"),
+            ]),
     
         .testTarget(
             name: "DualAuthiOSTests",
