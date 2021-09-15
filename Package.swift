@@ -23,6 +23,7 @@ let package = Package(
         .package(name: "secp256k1", url: "https://github.com/Boilertalk/secp256k1.swift.git", .upToNextMajor(from: "0.1.4")),
         .package(name: "Web3",url: "https://github.com/Boilertalk/Web3.swift.git",
             .upToNextMajor(from: "0.5.0")),
+        
     ],
        
        
@@ -38,6 +39,9 @@ let package = Package(
                            .product(name: "Web3", package: "Web3"),
                            .product(name: "Web3PromiseKit", package: "Web3"),
                            .product(name: "Web3ContractABI", package: "Web3"),
+            ],
+            resources: [
+                .process("wallet/abi.json")
             ]),
     
         .testTarget(

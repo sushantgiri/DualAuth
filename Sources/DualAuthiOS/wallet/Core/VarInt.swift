@@ -35,7 +35,7 @@ public struct VarInt: ExpressibleByIntegerLiteral {
         switch value {
         case 0...252:
             length = 1
-            data = Data() + UInt8(value).littleEndian
+            data = Data() +  UInt8(value).littleEndian
         case 253...0xffff:
             length = 2
             data = Data() + UInt8(0xfd).littleEndian + UInt16(value).littleEndian
@@ -59,7 +59,7 @@ public struct VarInt: ExpressibleByIntegerLiteral {
     }
     
     public static func deserialize(_ data: Data) -> VarInt {
-        return data.to(type: self)
+        return try! data.to(type: self)
     }
 }
 

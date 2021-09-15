@@ -50,11 +50,11 @@ extension BInt {
     var data: Data {
         let count = limbs.count
         var data = Data(count: count * 8)
-        data.withUnsafeMutableBytes { (pointer) -> Void in
+        try? data.withUnsafeMutableBytes { (pointer) -> Void in
             guard var p = pointer.bindMemory(to: UInt8.self).baseAddress else { return }
             for i in (0..<count).reversed() {
                 for j in (0..<8).reversed() {
-                    p.pointee = UInt8((limbs[i] >> UInt64(j * 8)) & 0xff)
+                    p.pointee = try UInt8((limbs[i] >> UInt64(j * 8)) & 0xff)
                     p += 1
                 }
             }
@@ -81,13 +81,13 @@ extension BInt {
             let r = n % 8
             let k = r == 0 ? 8 : r
             for j in (0..<k).reversed() {
-                limbs[m - 1] += UInt64(p.pointee) << UInt64(j * 8)
+                limbs[m - 1] += try! UInt64(p.pointee) << UInt64(j * 8)
                 p += 1
             }
             guard m > 1 else { return }
             for i in (0..<(m - 1)).reversed() {
                 for j in (0..<8).reversed() {
-                    limbs[i] += UInt64(p.pointee) << UInt64(j * 8)
+                    limbs[i] += try! UInt64(p.pointee) << UInt64(j * 8)
                     p += 1
                 }
             }

@@ -78,6 +78,6 @@ extension UInt8 {
 
 extension UInt32 {
     public init(_ hashType: SighashType) {
-        self = UInt32(UInt8(hashType))
+        self = try! UInt32(UInt8(hashType))
     }
 }

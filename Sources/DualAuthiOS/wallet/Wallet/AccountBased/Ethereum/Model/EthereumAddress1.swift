@@ -1,13 +1,12 @@
 //
-//  Address.swift
-//  HDWalletKit
+//  File.swift
+//  
 //
-//  Created by Pavlo Boiko on 12.07.18.
-//  Copyright © 2018 Essentia. All rights reserved.
+//  Created by Sushant Giri on 14/09/2021.
 //
 
 import Foundation
-/// Represents an address
+
 public struct EthereumAddress1: Codable {
     
     /// Address in data format
