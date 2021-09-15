@@ -21,8 +21,9 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(name: "CryptoSwift", url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMinor(from: "1.4.0")),
         .package(name: "secp256k1", url: "https://github.com/Boilertalk/secp256k1.swift.git", .upToNextMajor(from: "0.1.4")),
-        .package(name: "Web3",url: "https://github.com/Boilertalk/Web3.swift.git",
-            .upToNextMajor(from: "0.5.0")),
+        .package(name: "Web3", url: "https://github.com/Boilertalk/Web3.swift.git", from: "0.5.0")
+//        .package(name: "Web3",url: "https://github.com/Boilertalk/Web3.swift.git",
+//            .upToNextMajor(from: "0.5.0")),
         
     ],
        
