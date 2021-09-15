@@ -7,10 +7,10 @@
 
 import Foundation
 
-import Web3
-import Web3PromiseKit
-import Web3ContractABI
-import CommonCrypto
+//import Web3
+//import Web3PromiseKit
+//import Web3ContractABI
+//import CommonCrypto
 
 
 
@@ -24,29 +24,29 @@ public class WalletUtils {
     public var userAddress: String  = ""
     public var dataKey: String =  ""
     public var userData: UserData = UserData()
-    public var contract: DynamicContract?
+//    public var contract: DynamicContract?
 
     
     public init() {
         
-        initializeContract()
+//        initializeContract()
         
     }
     
-    func initializeContract(){
-        do{
-
-        let web3 = Web3(rpcURL: "http://182.162.89.51:4313")
-            let contractAddress = try EthereumAddress(hex: "0x3CF0CB3cD457b959F6027676dF79200C8EF19907", eip55: true)
-            if let url = Bundle.main.url(forResource: "abi", withExtension: "json") {
-                let contractJsonABI = try Data(contentsOf: url)
-                contract = try web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
-            }
-        }catch {
-            print(error.localizedDescription)
-        }
-
-    }
+//    func initializeContract(){
+//        do{
+//
+//        let web3 = Web3(rpcURL: "http://182.162.89.51:4313")
+//            let contractAddress = try EthereumAddress(hex: "0x3CF0CB3cD457b959F6027676dF79200C8EF19907", eip55: true)
+//            if let url = Bundle.main.url(forResource: "abi", withExtension: "json") {
+//                let contractJsonABI = try Data(contentsOf: url)
+//                contract = try web3.eth.Contract(json: contractJsonABI, abiKey: nil, address: contractAddress)
+//            }
+//        }catch {
+//            print(error.localizedDescription)
+//        }
+//
+//    }
 
 //    func sha256(data : Data) -> Data {
 //
@@ -58,18 +58,18 @@ public class WalletUtils {
 //    }
 
 
-    public func getRevokeCodeVC(vc: String, issuer: String, hash: Data, completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-
-        let modifiedIssuer = issuer.replacingOccurrences(of: "did:dual:", with: "")
-
-        firstly {
-            contract!["GetRevokeCodeVC"]!(hash,modifiedIssuer).call()
-        }.done { outputs in
-            completionHandler(true, nil)
-        }.catch { error in
-            completionHandler(false,error)
-        }
-    }
+//    public func getRevokeCodeVC(vc: String, issuer: String, hash: Data, completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+//
+//        let modifiedIssuer = issuer.replacingOccurrences(of: "did:dual:", with: "")
+//
+//        firstly {
+//            contract!["GetRevokeCodeVC"]!(hash,modifiedIssuer).call()
+//        }.done { outputs in
+//            completionHandler(true, nil)
+//        }.catch { error in
+//            completionHandler(false,error)
+//        }
+//    }
     
    public  func did(password: String, completionHandler: @escaping (_ payload: UserData?, _ error: Error?) -> Void){
         address()
