@@ -12,3 +12,8 @@ Features:
 - BIP44 key derivation
 - Solidity contract parsing
 And much more utilities you can explore with this project.
+
+You can use the library using as your regular Swift Packager manager. 
+
+.package(url: "https://github.com/sushantgiri/DualAuth.git", from: "0.13.0")
+
